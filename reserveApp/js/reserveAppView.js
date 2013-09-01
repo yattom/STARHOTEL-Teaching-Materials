@@ -166,8 +166,8 @@ var starHotelView = {
         $("#reservation").append("<h3 id='final_phone'>電話番号: " + checkValRes.reserve_phone + "</h3>");
         $("#reservation").append("<h3 id='final_email'>メールアドレス: " + decodeURIComponent(checkValRes.reserve_email) + "</h3>");
         var sexSting = "";
-        for (var i = 0; checkValRes.pv_headcount > i; i++) {
-            switch (parseInt(checkValRes.reserve_sex + i), 10) {
+        for (var i = 0; checkValRes["pv_headcount"] > i; i++) {
+            switch (parseInt(checkValRes["reserve_sex" + i])) {
                 case 0:
                     sexSting = "未入力";
                     break;
@@ -181,7 +181,7 @@ var starHotelView = {
                     sexSting = "未入力";
                     break;
             }
-            $("#reservation").append("<h3 id='final_email'>宿泊される方: " + checkValRes.reserve_pname + i + "様 (" + sexSting + ") </h3>");
+            $("#reservation").append("<h3 id='final_email'>宿泊される方: " + checkValRes["reserve_pname" + i] + "様 (" + sexSting + ") </h3>");
         }
     },
 }
