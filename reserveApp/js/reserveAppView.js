@@ -107,9 +107,9 @@ var starHotelView = {
 
         for (var i = 0; parseInt(checkValRes.hc, 10) > i; i++) {
             $("#reserve_info").append("お名前 \
-                <input id='reserve_person_name" + i + "' name='reserve_pname" + i + "' type='text' class='span4' maxlength='50' style='width:100px'> \
+                <input id='stay_person_name" + i + "' name='reserve_pname" + i + "' type='text' class='span4' maxlength='50' style='width:100px'> \
                 性別\
-                <select id='reserve_person_sex" + i + "' name='reserve_sex" + i + "' class='span4' style='width:70px'> \
+                <select id='stay_person_sex" + i + "' name='reserve_sex" + i + "' class='span4' style='width:70px'> \
                     <option value='0'></option> \
                     <option value='1'>男性</option> \
                     <option value='2'>女性</option> \
