@@ -115,8 +115,10 @@ var starHotelView = {
                     <option value='2'>女性</option> \
                 </select><br>");
         }
+        
 
-        $("#reserve_info").append('<hr><button id="confirm_and_agree" type="sender" class="btn" style="margin-bottom:20px">利用規約に同意して次へ</button>');
+        $("#reserve_info").append('<hr><div style="margin-bottom:15px;"><a onclick="javascript:alert(\'未実装\');return false;">利用規約を確認</a></div>');
+        $("#reserve_info").append('<button id="confirm_and_agree" type="sender" class="btn" style="margin-bottom:20px">利用規約に同意して次へ</button>');
         $("#reserve_info").append('　<button id="disagree" type="sender" class="btn" style="margin-bottom:20px" onclick="javascript:alert(\'未実装\');return false;")>同意しない</button>');
 
     },
