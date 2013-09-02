@@ -117,7 +117,7 @@ var starHotelView = {
         }
 
         $("#reserve_info").append('<hr><button id="confirm_and_agree" type="sender" class="btn" style="margin-bottom:20px">利用規約に同意して次へ</button>');
-        $("#reserve_info").append('　<button id="disagree" type="sender" class="btn" style="margin-bottom:20px" onclick="return false;")>同意しない</button>');
+        $("#reserve_info").append('　<button id="disagree" type="sender" class="btn" style="margin-bottom:20px" onclick="javascript:alert(\'未実装\');return false;")>同意しない</button>');
 
     },
 
