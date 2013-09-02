@@ -66,7 +66,7 @@
         <div id="slide1" class="well">
             <div id="errorcheck_result" style="color:red"></div>
             <hr>
-            <button id="returnto_index" type="sender" class="btn" style="margin-bottom:20px">戻る</button>
+            <button id="returnto_checkInfo" type="sender" class="btn" style="margin-bottom:20px">戻る</button>
             <div id="billing" style="display:none; margin-bottom:20px"></div>
             <div id="reservation" style="display:none; margin-bottom:20px">
                 <form>
@@ -162,15 +162,15 @@
 
     <div id="goto_thanks" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <button id="modalClose" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             <h3 id="myModalLabel">最終確認</h3>
         </div>
         <div class="modal-body">
             <p>この内容で予約を確定します。よろしいですか？</p>
         </div>
         <div class="modal-footer">
-            <button class="btn" data-dismiss="modal" aria-hidden="true">いいえ</button>
-            <button class="btn btn-primary">
+            <button id="modalNo" class="btn" data-dismiss="modal" aria-hidden="true">いいえ</button>
+            <button id="modalYes" class="btn btn-primary">
                 <a href="./thanks.html" style="color:white">はい</a>
             </button>
         </div>
