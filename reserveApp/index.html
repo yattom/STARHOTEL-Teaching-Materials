@@ -88,11 +88,10 @@
     $("#double_smoking").spinner({ min: 0, max: 9 });
 */
         now = new Date();
-        now.setTime(now.getTime() + 1 * 24 * 3600 * 1000);
         $("#datePick").val(now.getFullYear() + "/" + (now.getMonth() + 1) + "/" + now.getDate()); //sync picker date
         $("#reserve_year").val(now.getFullYear());
         $("#reserve_month").val(now.getMonth() + 1);
-        $("#reserve_day").val(now.getDate() + 1);
+        $("#reserve_day").val(now.getDate());
         $('#datePick').datepicker({
             format: 'yyyy/mm/dd'
         })
