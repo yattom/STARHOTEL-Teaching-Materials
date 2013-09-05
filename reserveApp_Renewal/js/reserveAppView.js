@@ -184,7 +184,7 @@ var starHotelView = {
                     sexSting = "未入力";
                     break;
             }
-            $("#reservation").append("<h3 id='final_email'>宿泊される方: " + checkValRes["reserve_pname" + i] + "様 (" + sexSting + ") </h3>");
+            $("#reservation").append("<h3 id=" + "reserve_pname" + i + ">宿泊される方: " + checkValRes["reserve_pname" + i] + "様 (" + sexSting + ") </h3>");
         }
         $("#reservation").append("<hr>");
         $("#reservation").append('<a href="#goto_thanks" role="button" class="btn" data-toggle="modal">確定</a>');
