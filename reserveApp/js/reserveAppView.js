@@ -139,7 +139,7 @@ var starHotelView = {
         // decimal and alphabet check.
         var d_a_Check = /[a-zA-Z0-9.@]+$/;
         if (!d_a_Check.test(checkValRes.reserve_email)) {
-            $("#errorcheck_result").append("email欄に全角文字があります<br>");
+            $("#errorcheck_result").append("email欄に不正な文字があります<br>");
             return false;
         }
 
