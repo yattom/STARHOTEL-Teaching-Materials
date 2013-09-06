@@ -6,6 +6,13 @@ var starHotelView = {
 
     checkInfo_isErrorRender: function(checkValRes, dateValue) {
         "use strict";
+
+        //light weight xss check
+        for (var key in checkValRes) {
+            checkValRes[key] = checkValRes[key].replace(/</ig, "&lt;");
+            console.log(checkValRes[key]);
+        }
+
         // field empty check /* could not using jQuery.query plugin, it was confuse return types*/
         if (!starHotel.fieldEmptyCheck("reserve_y", "reserve_m", "reserve_d", "reserve_t", "hc")) {
             $("#errorcheck_result").append("年月日、期間または人数のいずれかが空です<br>");
@@ -122,6 +129,13 @@ var starHotelView = {
 
     finalConfirm_isErrorRender: function(checkValRes) {
         "use strict";
+
+        //light weight xss check
+        for (var key in checkValRes) {
+            checkValRes[key] = checkValRes[key].replace(/</ig, "&lt;");
+            console.log(checkValRes[key]);
+        }
+
         // field empty check /* could not using jQuery.query plugin, it was confuse return types*/
         if (!starHotel.fieldEmptyCheck("reserve_pname", "reserve_zip_pre", "reserve_zip_post", "reserve_phone",
             "reserve_email", "reserve_address")) {

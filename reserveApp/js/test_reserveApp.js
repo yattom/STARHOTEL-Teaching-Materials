@@ -153,6 +153,10 @@ test("calcTotalBilling", function(){
     deepEqual(starHotel.calcTotalBilling(1, 0, 0, 0, nineteenDaysAfter, "off", "off", "off", 1), 7000, "(13)");
     deepEqual(starHotel.calcTotalBilling(2, 0, 0, 0, twentyOneDaysAfter, "off", "off", "off", 1), 12000, "(14)");
     deepEqual(starHotel.calcTotalBilling(1, 0, 1, 0, twentyOneDaysAfter, "off", "off", "off", 1), 16000, "(15)");
+
+    if(twentyOneDaysAfter.getDay() == 5){// this test case 20 days after + 2days. If 20 days after is friday, holiday within test case ranges.
+        twentyOneDaysAfter.setTime(twentyOneDaysAfter.getTime() + 3 * 24 * 3600 * 1000);
+    }
     deepEqual(starHotel.calcTotalBilling(1, 0, 0, 0, twentyOneDaysAfter, "off", "off", "off", 2), 13000, "(16)");
 
     deepEqual(starHotel.calcTotalBilling(1, 0, 0, 0, holiday, "off", "off", "off", 9), 7000 * 5 + 8750 * 4, "(17)");
