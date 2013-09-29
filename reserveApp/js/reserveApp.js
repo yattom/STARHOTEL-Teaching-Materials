@@ -51,7 +51,7 @@ var starHotel = {
         }
         return true;
     },
-    calcTotalBilling: function(single_ns, single_s, double_ns, double_s, date, bf_viking, planA, planB, term) {
+    calcTotalBilling: function(single_ns, single_s, double_ns, double_s, date, bf, planA, planB, term) {
         "use strict";
         var roomBill = ((single_ns + single_s) * 7000) + ((double_ns + double_s) * 6000 * 2);
         var basicPrice = roomBill * term; //basic price
@@ -72,9 +72,9 @@ var starHotel = {
         var totalBill = holidayPriceBill;
         var headCount = (single_ns + single_s + double_ns * 2 + double_s * 2);
 
-        if (bf_viking === "on") {
+        if (bf === "on") {
             totalBill = holidayPriceBill + (1000 * term * headCount);
-        } //bf_viking
+        } //bf
 
         var now = new Date(); //If the 1st day is after 20days from today, 1000yen off each one person.
         if (date.getTime() > now.getTime() + 19 * 24 * 3600 * 1000) {

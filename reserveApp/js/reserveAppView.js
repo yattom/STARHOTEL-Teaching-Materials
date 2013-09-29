@@ -62,7 +62,7 @@ var starHotelView = {
             return false;
         }
         // Breakfast check 
-        if (!checkValRes.bf_viking) {
+        if (!checkValRes.bf) {
             $("#errorcheck_result").append("朝食の有無が指定されていません<br>");
             return false;
         }
@@ -94,7 +94,7 @@ var starHotelView = {
         if (parseInt(checkValRes.double_s, 10) > 0) {
             $("#billing").append("<h4 id='count_double_s'>" + "ダブル(喫煙)" + parseInt(checkValRes.double_ns, 10) * 2 + "人 = " + parseInt(checkValRes.double_s, 10) * 6000 * 2 + "円</h4>");
         }
-        if (checkValRes.bf_viking === "on") {
+        if (checkValRes.bf === "on") {
             $("#billing").append("<h4 id='breakfast'>朝食: あり</h4>");
         } else {
             $("#billing").append("<h4 id='breakfast'>朝食: なし</h4>");
