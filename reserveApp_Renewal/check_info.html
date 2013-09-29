@@ -173,7 +173,7 @@
 
         /* calculate charge. If exist some error, not running from here*/
         var totalBill = starHotel.calcTotalBilling(parseInt(checkValRes["single_s"]), parseInt(checkValRes["single_ns"]),
-            parseInt(checkValRes["double_s"]), parseInt(checkValRes["double_ns"]), dateValue, checkValRes["bf_viking"],
+            parseInt(checkValRes["double_s"]), parseInt(checkValRes["double_ns"]), dateValue, checkValRes["bf"],
             checkValRes["plan_a"], checkValRes["plan_b"], parseInt(checkValRes["reserve_t"]));
 
         starHotelView.renderCheckInfo(totalBill, dateValue);

@@ -6,7 +6,7 @@ module("with_checkValRes", {
             "reserve_d": "",
             "reserve_t": "1",
             "hc": "5",
-            "bf_viking": "on", // real data, until here.
+            "bf": "on", // real data, until here.
             "test_data_zenkaku_char": "あ",
             "test_data_zenkaku_number": "８",
             "test_data_zenkaku_symbol": "【",
@@ -82,29 +82,29 @@ test("decimalCheck", function(){
 
 test("calcTotalBilling", function(){
     /*Test Design without combination.
-    arg: single_ns, single_s, double_ns, double_s, date, bf_viking, planA, planB.
+    arg: single_ns, single_s, double_ns, double_s, date, bf, planA, planB.
     valid partition:
-        (1)single_ns:1, single_s:0, double_ns:0, double_s:0, date:workday, bf_viking:off, planA:off, planB:off, term:1; => 7000
-        (2)single_ns:0, single_s:0, double_ns:1, double_s:0, date:workday, bf_viking:off, planA:off, planB:off, term:1; => 12000
-        (3)single_ns:0, single_s:0, double_ns:0, double_s:1, date:workday, bf_viking:off, planA:off, planB:off, term:1; => 12000
-        (4)single_ns:1, single_s:1, double_ns:1, double_s:1, date:workday, bf_viking:off, planA:off, planB:off, term:1; => 38000
-        (5)single_ns:1, single_s:0, double_ns:0, double_s:0, date:holiday, bf_viking:off, planA:off, planB:off, term:1; => 8750
-        (6)single_ns:1, single_s:0, double_ns:0, double_s:0, date:holiday, bf_viking:on, planA:off, planB:off, term:1; => 9750
-        (7)single_ns:1, single_s:0, double_ns:0, double_s:0, date:holiday, bf_viking:on, planA:off, planB:on, term:1; => 10750
-        (8)single_ns:1, single_s:1, double_ns:1, double_s:1, date:holiday, bf_viking:on, planA:on, planB:on, term:1; => 10750
+        (1)single_ns:1, single_s:0, double_ns:0, double_s:0, date:workday, bf:off, planA:off, planB:off, term:1; => 7000
+        (2)single_ns:0, single_s:0, double_ns:1, double_s:0, date:workday, bf:off, planA:off, planB:off, term:1; => 12000
+        (3)single_ns:0, single_s:0, double_ns:0, double_s:1, date:workday, bf:off, planA:off, planB:off, term:1; => 12000
+        (4)single_ns:1, single_s:1, double_ns:1, double_s:1, date:workday, bf:off, planA:off, planB:off, term:1; => 38000
+        (5)single_ns:1, single_s:0, double_ns:0, double_s:0, date:holiday, bf:off, planA:off, planB:off, term:1; => 8750
+        (6)single_ns:1, single_s:0, double_ns:0, double_s:0, date:holiday, bf:on, planA:off, planB:off, term:1; => 9750
+        (7)single_ns:1, single_s:0, double_ns:0, double_s:0, date:holiday, bf:on, planA:off, planB:on, term:1; => 10750
+        (8)single_ns:1, single_s:1, double_ns:1, double_s:1, date:holiday, bf:on, planA:on, planB:on, term:1; => 10750
 
-        (9)single_ns:1, single_s:0, double_ns:0, double_s:0, date:workday, bf_viking:off, planA:off, planB:off, term:2; => 14000
-       (10)single_ns:1, single_s:0, double_ns:0, double_s:0, date:workday, bf_viking:on, planA:off, planB:off, term:2; => 16000
-       (11)single_ns:1, single_s:0, double_ns:0, double_s:0, date:workday, bf_viking:on, planA:on, planB:off, term:2; => 17000
+        (9)single_ns:1, single_s:0, double_ns:0, double_s:0, date:workday, bf:off, planA:off, planB:off, term:2; => 14000
+       (10)single_ns:1, single_s:0, double_ns:0, double_s:0, date:workday, bf:on, planA:off, planB:off, term:2; => 16000
+       (11)single_ns:1, single_s:0, double_ns:0, double_s:0, date:workday, bf:on, planA:on, planB:off, term:2; => 17000
 
-       (12)single_ns:1, single_s:0, double_ns:0, double_s:0, date:twentyOneDaysAfter, bf_viking:off, planA:off, planB:off, term:1; => 6000
-       (13)single_ns:1, single_s:0, double_ns:0, double_s:0, date:nineteenDaysAfter, bf_viking:off, planA:off, planB:off, term:1; => 7000
-       (14)single_ns:2, single_s:0, double_ns:0, double_s:0, date:twentyOneDaysAfter, bf_viking:off, planA:off, planB:off, term:1; => 12000
-       (15)single_ns:1, single_s:0, double_ns:1, double_s:0, date:twentyOneDaysAfter, bf_viking:off, planA:off, planB:off, term:1; => 16000
-       (16)single_ns:1, single_s:0, double_ns:0, double_s:0, date:twentyOneDaysAfter, bf_viking:off, planA:off, planB:off, term:2; => 13000
+       (12)single_ns:1, single_s:0, double_ns:0, double_s:0, date:twentyOneDaysAfter, bf:off, planA:off, planB:off, term:1; => 6000
+       (13)single_ns:1, single_s:0, double_ns:0, double_s:0, date:nineteenDaysAfter, bf:off, planA:off, planB:off, term:1; => 7000
+       (14)single_ns:2, single_s:0, double_ns:0, double_s:0, date:twentyOneDaysAfter, bf:off, planA:off, planB:off, term:1; => 12000
+       (15)single_ns:1, single_s:0, double_ns:1, double_s:0, date:twentyOneDaysAfter, bf:off, planA:off, planB:off, term:1; => 16000
+       (16)single_ns:1, single_s:0, double_ns:0, double_s:0, date:twentyOneDaysAfter, bf:off, planA:off, planB:off, term:2; => 13000
 
        //9 days from Satday, The holiday(getDay() => 0 || 6) include 4 times. 601 234 560
-       (17)single_ns:1, single_s:0, double_ns:0, double_s:0, date:holiday, bf_viking:off, planA:off, planB:off, term:9; => 8750 + 35000 + 8750 + 8750 + 7000
+       (17)single_ns:1, single_s:0, double_ns:0, double_s:0, date:holiday, bf:off, planA:off, planB:off, term:9; => 8750 + 35000 + 8750 + 8750 + 7000
 
     invalid partition:
         N/A, ensure by error check until here and it is single & liner processing.
