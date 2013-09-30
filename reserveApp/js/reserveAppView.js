@@ -62,13 +62,14 @@ var starHotelView = {
         "use strict";
         //display billing
         $("#billing").append("<h3 id='total'>合計 " + totalBill + "円(税込み)</h3>");
-        $("#billing").append("<div style='margin-bottom:10px'>(シングル：1人1泊7000円～、土日は25%アップ) <a href=\"javascript:alert('未実装')\">料金詳細を確認</a></div>");
+        $("#billing").append("<div style='margin-bottom:10px'>(おひとり様1泊7000円～、土日は25%アップ) <a href=\"javascript:alert('未実装')\">料金詳細を確認</a></div>");
         dateValue = new Date(dateValue);
         var dateFrom = dateValue.getFullYear() + "年" + (dateValue.getMonth() + 1) + "月" + dateValue.getDate() + "日";
         dateValue.setTime(dateValue.getTime() + checkValRes.reserve_t * 24 * 3600 * 1000); //Warning!! dateValue move to N days after.   
         var dateTo = dateValue.getFullYear() + "年" + (dateValue.getMonth() + 1) + "月" + dateValue.getDate() + "日";
 
-        $("#billing").append("<h4 id='term'>" + dateFrom + " 〜 " + dateTo + "  " + checkValRes.reserve_t + "泊</h4>");
+        $("#billing").append("<h4 id='term'>期間: " + dateFrom + " 〜 " + dateTo + "  " + checkValRes.reserve_t + "泊</h4>");
+        $("#billing").append("<h4 id='term'>ご人数: " + checkValRes.hc + "名様</h4>");
 
         //room table
         if (parseInt(checkValRes.single_ns, 10) > 0) {
