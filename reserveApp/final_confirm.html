@@ -10,7 +10,7 @@
 <body>
     <div class="container">
 
-        <h1>最終のご確認</h1>
+        <h1>予約を完了しました。</h1>
 
         <div id="slide1" class="well">
             <div id="errorcheck_result" style="color:red"></div>
@@ -60,27 +60,7 @@
 
     $(function() {　 //init
 
-        var checkValRes = getUrlVars();
-
-        if(!starHotelView.finalConfirm_isErrorRender(checkValRes)) {
-            return false;
-        }
-
-        //rendering prev html data
-        var prevHtml = decodeURIComponent(checkValRes["pv_formdata"]);
-        starHotelView.renderFinalConfirm(prevHtml);
-
-        $("#reservation").append("<hr>");
-        $("#reservation").append('<button onclick="disp()">確定</button>');
-        $("#reservation").slideDown("fast");
-
     });
-
-    function disp() {
-        if (window.confirm('この内容で予約を確定します。よろしいですか？')) {
-            location.href = "thanks.html"; 
-        } else {}
-    }
 
     </script>
 
