@@ -63,25 +63,20 @@ var starHotel = {
         var dayCounter = date.getDay(); //scan holiday within term days.
         for (var i = 0; term > i; i++) {
             if (dayCounter === 0 || dayCounter === 6) {
-                basicPrice += term * 1750;
+                basicPrice += 1750;
             }
             dayCounter++;
             if (dayCounter > 6) {
                 dayCounter = 0;
             }
         }
-        var holidayPriceBill = basicPrice; //calc holiday price s:+1750, d:+1500;
+        var holidayPriceBill = basicPrice; //calc holiday price s:+1750
         console.log("holidayPriceBill",holidayPriceBill);
         var totalBill = holidayPriceBill;
 
         if (bf === "on") {
             totalBill = holidayPriceBill + (1000 * term * hc);
         } //bf
-
-        var now = new Date(); //If the 1st day is after 20days from today, 1000yen off each one person.
-        if (date.getTime() > now.getTime() + 19 * 24 * 3600 * 1000) {
-            totalBill = totalBill - (1000 * hc);
-        }
 
         if (planA === "on") {
             totalBill += (1000 * hc);
