@@ -69,12 +69,8 @@ var starHotelView = {
         var dateTo = dateValue.getFullYear() + "年" + (dateValue.getMonth() + 1) + "月" + dateValue.getDate() + "日";
 
         $("#billing").append("<h4 id='term'>期間: " + dateFrom + " 〜 " + dateTo + "  " + checkValRes.reserve_t + "泊</h4>");
-        $("#billing").append("<h4 id='term'>ご人数: " + checkValRes.hc + "名様</h4>");
+        $("#billing").append("<h4 id='headcount'>ご人数: " + checkValRes.hc + "名様</h4>");
 
-        //room table
-        if (parseInt(checkValRes.single_ns, 10) > 0) {
-            $("#billing").append("<h4 id='count_single_ns'>" + "シングル(禁煙)" + checkValRes.single_ns + "人 = " + parseInt(checkValRes.single_ns, 10) * 7000 + "円</h4>");
-        }
         if (checkValRes.bf === "on") {
             $("#billing").append("<h4 id='breakfast'>朝食: あり</h4>");
         } else {
@@ -86,12 +82,7 @@ var starHotelView = {
             $("#billing").append("</h4>");
         }
 
-        $("#billing").append("<h4 id='term'>お名前: " + checkValRes.gname + " 様</h4>");        
-
-        $("#prev_formdata").val(encodeURIComponent($("#billing").html()));
-        console.log($("#billing").html());
-        $("#prev_headcount").val(checkValRes.hc);
-
+        $("#billing").append("<h4 id='term'>お名前: " + checkValRes.gname + " 様</h4>");
         $("#billing").slideDown("fast");
         $("#reserve_info").slideDown("fast");
 
@@ -99,10 +90,4 @@ var starHotelView = {
 
     },
 
-    renderFinalConfirm: function(prevHtml) {
-        "use strict";
-        prevHtml = prevHtml.replace(/\(シングル.*<a href=.*料金詳細を確認<\/a>/, "");
-        $("#billing").append(prevHtml);
-        $("#billing").slideDown("fast");
-    },
 }
