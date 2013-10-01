@@ -56,18 +56,19 @@ public class PracticeWork3 {
         inputPage.setBreakfast(false);
         inputPage.setPlanA(false);
         inputPage.setPlanB(false);
-        inputPage.setReservePersonName("abcd");
+        inputPage.setGuestName("abcd");
         ReserveConfirmPage confirmPage = inputPage.goToNext();
         
         // 2ページ目入力画面
-        assertThat(confirmPage.getTotal(), is("22750"));
-        assertThat(confirmPage.getStartReserveDate(), is("2013年12月8日"));
-        assertThat(confirmPage.getEndReserveDate(), is("2013年12月11日"));
-        assertThat(confirmPage.getReserveTerm(), is("3"));
+        assertThat(confirmPage.getPrice(), is("22750"));
+        assertThat(confirmPage.getDateFrom(), is("2013年12月8日"));
+        assertThat(confirmPage.getDateTo(), is("2013年12月11日"));
+        assertThat(confirmPage.getDaysCount(), is("3"));
         assertThat(confirmPage.getHeadCount(), is("1"));
         assertThat(confirmPage.getBreakfast(), is("なし"));
-        assertThat(confirmPage.getPlan(), is(""));
-        assertThat(confirmPage.getFinalPName(), is("abcd"));
-        confirmPage.confirm();        
+        assertThat(confirmPage.existsPlanA(), is(false));
+        assertThat(confirmPage.existsPlanB(), is(false));
+        assertThat(confirmPage.getGuestName(), is("abcd"));
+        confirmPage.confirm();   
     }
 }
