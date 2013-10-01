@@ -51,11 +51,11 @@ public class PracticeWork4 {
         String url = "file:///" + html.getAbsolutePath();
         driver.get(url);
         
-        ReserveInputPage inputPage = new ReserveInptPage(driver);
+        ReserveInputPage inputPage = new ReserveInputPage(driver);
         assertThat(inputPage.getReserveYear(), 
                 is(Integer.toString(now.get(Calendar.YEAR))));
         assertThat(inputPage.getReserveMonth(), 
-                is(Integer.toString(now.get(Calendar.MONTH))));
+                is(Integer.toString(now.get(Calendar.MONTH) + 1)));
         assertThat(inputPage.getReserveDay(), 
                 is(Integer.toString(now.get(Calendar.DATE))));
         assertThat(inputPage.getReserveTerm(), is("1"));
@@ -63,6 +63,6 @@ public class PracticeWork4 {
         assertThat(inputPage.getBreakfast(), is(true));
         assertThat(inputPage.getPlanA(), is(false));
         assertThat(inputPage.getPlanB(), is(false));
-        assertThat(inputPage.getReservePersonName(), is(""));
+        assertThat(inputPage.getGuestName(), is(""));
     }
 }
