@@ -15,7 +15,7 @@ public class ReserveInputPage {
     private By breakfastOff = By.id("breakfast_off");
     private By planA = By.id("plan_a");
     private By planB = By.id("plan_b");
-    private By reservePersonName = By.id("reserve_person_name");
+    private By guestName = By.id("guestname");
     private By goToNext = By.id("goto_next");
 
     public ReserveInputPage(WebDriver driver) {
@@ -80,8 +80,8 @@ public class ReserveInputPage {
         }
     }
 
-    public void setReservePersonName(String value) {
-        WebElement element = driver.findElement(reservePersonName);
+    public void setGuestName(String value) {
+        WebElement element = driver.findElement(guestName);
         element.clear();
         element.sendKeys(value);
     }

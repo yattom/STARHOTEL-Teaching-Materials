@@ -5,50 +5,55 @@ import org.openqa.selenium.WebDriver;
 
 public class ReserveConfirmPage {
     private WebDriver driver;    
-    private By total = By.id("total");
-    private By startReserveDate = By.id("start_reserve_date");
-    private By endReserveDate = By.id("end_reserve_date");
-    private By reserveTerm = By.id("reserve_term");
-    private By headCount = By.id("headCount");
-    private By breakfast = By.id("breakfast");
-    private By plan = By.id("plan");
-    private By finalPName = By.id("final_pname");
+    private By price = By.id("price");
+    private By dateFrom = By.id("datefrom");
+    private By dateTo = By.id("dateto");
+    private By daysCount = By.id("dayscount");
+    private By hc = By.id("hc");
+    private By bfOrder = By.id("bf_order");
+    private By planAOrder = By.id("plan_a_order");
+    private By planBOrder = By.id("plan_b_order");
+    private By gName = By.id("gname");
     private By confirm = By.id("confirm");
-    
+        
     public ReserveConfirmPage(WebDriver driver) {
         this.driver = driver;
     }
     
-    public String getTotal() {
-        return driver.findElement(total).getText();
+    public String getPrice() {
+        return driver.findElement(price).getText();
     }
     
-    public String getStartReserveDate() {
-        return driver.findElement(startReserveDate).getText();
+    public String getDateFrom() {
+        return driver.findElement(dateFrom).getText();
     }
 
-    public String getEndReserveDate() {
-        return driver.findElement(endReserveDate).getText();
+    public String getDateTo() {
+        return driver.findElement(dateTo).getText();
     }
     
-    public String getReserveTerm() {
-        return driver.findElement(reserveTerm).getText();
+    public String getDaysCount() {
+        return driver.findElement(daysCount).getText();
     }
     
     public String getHeadCount() {
-        return driver.findElement(headCount).getText();
+        return driver.findElement(hc).getText();
     }
     
     public String getBreakfast() {
-        return driver.findElement(breakfast).getText();
+        return driver.findElement(bfOrder).getText();
     }
     
-    public String getPlan() {
-        return driver.findElement(plan).getText();
+    public String getPlanA() {
+        return driver.findElement(planAOrder).getText();
+    }
+
+    public String getPlanB() {
+        return driver.findElement(planBOrder).getText();
     }
     
-    public String getFinalPName() {
-        return driver.findElement(finalPName).getText();
+    public String getGuestName() {
+        return driver.findElement(gName).getText();
     }
     
     public void confirm() {

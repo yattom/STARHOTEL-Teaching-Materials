@@ -13,7 +13,7 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import　practicework.pages.ReserveConfirmPage;
+import practicework.pages.ReserveConfirmPage;
 import practicework.pages.ReserveInputPage;
 
 public class PracticeWork2 {
@@ -57,18 +57,19 @@ public class PracticeWork2 {
         inputPage.setBreakfast(true);
         inputPage.setPlanA(true);
         inputPage.setPlanB(true);
-        inputPage.setReservePersonName("a");
+        inputPage.setGuestName("a");
         ReserveConfirmPage confirmPage = inputPage.goToNext();
         
         // 2ページ目入力画面
-        assertThat(confirmPage.getTotal(), is("105750"));
-        assertThat(confirmPage.getStartReserveDate(), is("2013年12月7日"));
-        assertThat(confirmPage.getEndReserveDate(), is("2013年12月8日"));
-        assertThat(confirmPage.getReserveTerm(), is("1"));
+        assertThat(confirmPage.getPrice(), is("105750"));
+        assertThat(confirmPage.getDateFrom(), is("2013年12月7日"));
+        assertThat(confirmPage.getDateTo(), is("2013年12月8日"));
+        assertThat(confirmPage.getDaysCount(), is("1"));
         assertThat(confirmPage.getHeadCount(), is("9"));
         assertThat(confirmPage.getBreakfast(), is("あり"));
-        assertThat(confirmPage.getPlan(), is("昼からチェックインプラン お得な観光プラン"));
-        assertThat(confirmPage.getFinalPName(), is("a"));
+        assertThat(confirmPage.getPlanA(), is("昼からチェックインプラン"));
+        assertThat(confirmPage.getPlanB(), is("お得な観光プラン")); 
+        assertThat(confirmPage.getGuestName(), is("a"));
         confirmPage.confirm();
     }
 }
