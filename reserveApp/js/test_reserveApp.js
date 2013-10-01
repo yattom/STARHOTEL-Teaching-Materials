@@ -97,7 +97,7 @@ test("calcTotalBilling", function(){
     */
 
     var workday = new Date("2013/8/26");//Monday
-    var holiday = new Date("2013/8/31");//Satday
+    var holiday = new Date("2013/8/31");//Saturday
 
     deepEqual(starHotel.calcTotalBilling(workday, "on", "on", "on", 1, 1), 10000);
     deepEqual(starHotel.calcTotalBilling(holiday, "on", "on", "on", 1, 1), (7000 * 1.25) +1000+1000+1000);

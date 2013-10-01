@@ -63,7 +63,7 @@ var starHotel = {
         var dayCounter = date.getDay(); //scan holiday within term days.
         for (var i = 0; term > i; i++) {
             if (dayCounter === 0 || dayCounter === 6) {
-                basicPrice += 1750;
+                basicPrice += 1750 * hc;
             }
             dayCounter++;
             if (dayCounter > 6) {
