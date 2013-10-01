@@ -58,10 +58,10 @@ public class PracticeWork3 {
         ReserveConfirmPage confirmPage = inputPage.goToNext();
         
         // 2ページ目入力画面
-        assertThat(confirmPage.getTotal(), is("22750"));
-        assertThat(confirmPage.getStartReserveDate(), is("2013年12月8日"));
-        assertThat(confirmPage.getEndReserveDate(), is("2013年12月11日"));
-        assertThat(confirmPage.getReserveTerm(), is("3"));
+        assertThat(confirmPage.getPrice(), is("22750"));
+        assertThat(confirmPage.getDateFrom(), is("2013年12月8日"));
+        assertThat(confirmPage.getDateTo(), is("2013年12月11日"));
+        assertThat(confirmPage.getDaysCount(), is("3"));
 
         // TODO 残りの処理を記述してください
     }

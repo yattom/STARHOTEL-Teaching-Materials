@@ -58,7 +58,7 @@ public class PracticeWork1 {
         driver.findElement(By.id("reserve_term")).clear();
         driver.findElement(By.id("reserve_term")).sendKeys("1");
         driver.findElement(By.id("headcount")).clear();
-        driver.findElement(By.id("headount")).sendKeys("9");
+        driver.findElement(By.id("headcount")).sendKeys("9");
         driver.findElement(By.id("breakfast_on")).click();
         WebElement planA = driver.findElement(By.id("plan_a"));
         if (!planA.isSelected()) {
@@ -68,20 +68,20 @@ public class PracticeWork1 {
         if (!planB.isSelected()) {
             planB.click();
         }
-        driver.findElement(By.id("reserve_person_name")).clear();
-        driver.findElement(By.id("reserve_person_name")).sendKeys("a");
+        driver.findElement(By.id("guestname")).clear();
+        driver.findElement(By.id("guestname")).sendKeys("a");
         driver.findElement(By.id("goto_next")).click();
         
         // 2ページ目入力画面
-        assertThat(driver.findElement(By.id("total")).getText(), is("105750"));
-        assertThat(driver.findElement(By.id("start_reserve_date")).getText(), is("2013年12月7日"));
-        assertThat(driver.findElement(By.id("end_reserve_date")).getText(), is("2013年12月8日"));
-        assertThat(driver.findElement(By.id("reserve_term")).getText(), is("1"));
-        assertThat(driver.findElement(By.id("headcount")).getText(), is("9"));
-        assertThat(driver.findElement(By.id("breakfast")).getText(), is("あり"));
-        assertThat(driver.findElement(By.id("plan")).getText(), 
-                is("昼からチェックインプラン お得な観光プラン"));
-        assertThat(driver.findElement(By.id("final_pname")).getText(), is("a"));
+        assertThat(driver.findElement(By.id("price")).getText(), is("105750"));
+        assertThat(driver.findElement(By.id("datefrom")).getText(), is("2013年12月7日"));
+        assertThat(driver.findElement(By.id("dateto")).getText(), is("2013年12月8日"));
+        assertThat(driver.findElement(By.id("dayscount")).getText(), is("1"));
+        assertThat(driver.findElement(By.id("hc")).getText(), is("9"));
+        assertThat(driver.findElement(By.id("bf_order")).getText(), is("あり"));
+        assertThat(driver.findElement(By.id("plan_a_order")).getText(), is("昼からチェックインプラン"));
+        assertThat(driver.findElement(By.id("plan_b_order")).getText(), is("お得な観光プラン"));
+        assertThat(driver.findElement(By.id("gname")).getText(), is("a"));
         driver.findElement(By.id("confirm")).click();
     }
 }

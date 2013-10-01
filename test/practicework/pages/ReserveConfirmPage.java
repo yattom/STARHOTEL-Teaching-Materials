@@ -5,28 +5,28 @@ import org.openqa.selenium.WebDriver;
 
 public class ReserveConfirmPage {
     private WebDriver driver;    
-    private By total = By.id("total");
-    private By startReserveDate = By.id("start_reserve_date");
-    private By endReserveDate = By.id("end_reserve_date");
-    private By reserveTerm = By.id("reserve_term");
-    
+    private By price = By.id("price");
+    private By dateFrom = By.id("datefrom");
+    private By dateTo = By.id("dateto");
+    private By daysCount = By.id("dayscount");
+        
     public ReserveConfirmPage(WebDriver driver) {
         this.driver = driver;
     }
     
-    public String getTotal() {
-        return driver.findElement(total).getText();
+    public String getPrice() {
+        return driver.findElement(price).getText();
     }
     
-    public String getStartReserveDate() {
-        return driver.findElement(startReserveDate).getText();
+    public String getDateFrom() {
+        return driver.findElement(dateFrom).getText();
     }
 
-    public String getEndReserveDate() {
-        return driver.findElement(endReserveDate).getText();
+    public String getDateTo() {
+        return driver.findElement(dateTo).getText();
     }
     
-    public String getReserveTerm() {
-        return driver.findElement(reserveTerm).getText();
+    public String getDaysCount() {
+        return driver.findElement(daysCount).getText();
     }
 }

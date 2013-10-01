@@ -53,7 +53,7 @@ public class PracticeWork1 {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        
+
         // 1ページ目入力画面
         driver.findElement(By.id("reserve_year")).clear();
         driver.findElement(By.id("reserve_year")).sendKeys("2013");
@@ -66,15 +66,12 @@ public class PracticeWork1 {
         
         // TODO 残りの処理を記述してください
 
-        
         // 2ページ目入力画面
-        assertThat(driver.findElement(By.id("total")).getText(), is("105750"));
-        assertThat(driver.findElement(By.id("start_reserve_date")).getText(), is("2013年12月7日"));
-        assertThat(driver.findElement(By.id("end_reserve_date")).getText(), is("2013年12月8日"));
-        assertThat(driver.findElement(By.id("reserve_term")).getText(), is("1"));
+        assertThat(driver.findElement(By.id("price")).getText(), is("105750"));
+        assertThat(driver.findElement(By.id("datefrom")).getText(), is("2013年12月7日"));
+        assertThat(driver.findElement(By.id("dateto")).getText(), is("2013年12月8日"));
+        assertThat(driver.findElement(By.id("dayscount")).getText(), is("1"));
 
         // TODO 残りの処理を記述してください
-
-    
     }
 }
