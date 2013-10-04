@@ -70,6 +70,6 @@ public class PracticeWork2 {
         assertThat(confirmPage.getPlanA(), is("昼からチェックインプラン"));
         assertThat(confirmPage.getPlanB(), is("お得な観光プラン")); 
         assertThat(confirmPage.getGuestName(), is("a"));
-        confirmPage.confirm();
+        confirmPage.commit();
     }
 }

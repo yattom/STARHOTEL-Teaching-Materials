@@ -14,7 +14,7 @@ public class ReserveConfirmPage {
     private By planAOrder = By.id("plan_a_order");
     private By planBOrder = By.id("plan_b_order");
     private By gName = By.id("gname");
-    private By confirm = By.id("confirm");
+    private By commit = By.id("commit");
         
     public ReserveConfirmPage(WebDriver driver) {
         this.driver = driver;
@@ -56,7 +56,7 @@ public class ReserveConfirmPage {
         return driver.findElement(gName).getText();
     }
     
-    public void confirm() {
-        driver.findElement(confirm).click();
+    public void commit() {
+        driver.findElement(commit).click();
     }
 }

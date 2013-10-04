@@ -86,7 +86,7 @@ var starHotelView = {
         $("#billing").slideDown("fast");
         $("#reserve_info").slideDown("fast");
 
-        $("#reserve_info").append('<hr><button id="confirm" type="sender" class="btn" style="margin-bottom:20px">確認</button>');
+        $("#reserve_info").append('<hr><button id="commit" type="sender" class="btn" style="margin-bottom:20px">確定</button>');
 
     },
 

@@ -69,6 +69,6 @@ public class PracticeWork3 {
         assertThat(confirmPage.existsPlanA(), is(false));
         assertThat(confirmPage.existsPlanB(), is(false));
         assertThat(confirmPage.getGuestName(), is("abcd"));
-        confirmPage.confirm();   
+        confirmPage.commit();   
     }
 }

@@ -82,6 +82,6 @@ public class PracticeWork1 {
         assertThat(driver.findElement(By.id("plan_a_order")).getText(), is("昼からチェックインプラン"));
         assertThat(driver.findElement(By.id("plan_b_order")).getText(), is("お得な観光プラン"));
         assertThat(driver.findElement(By.id("gname")).getText(), is("a"));
-        driver.findElement(By.id("confirm")).click();
+        driver.findElement(By.id("commit")).click();
     }
 }
