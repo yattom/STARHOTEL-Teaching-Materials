@@ -51,42 +51,40 @@ var starHotel = {
         }
         return true;
     },
-    calcTotalBilling: function(single_ns, single_s, double_ns, double_s, date, bf, planA, planB, term) {
+    calcTotalBilling: function(date, bf, planA, planB, term, hc) {
         "use strict";
-        var roomBill = ((single_ns + single_s) * 7000) + ((double_ns + double_s) * 6000 * 2);
-        var basicPrice = roomBill * term; //basic price
+        var roomBill = 7000;
+        var basicPrice = roomBill * term * hc; //basic price
+
+        console.log(date, bf, planA, planB, term, hc);
+        console.log("basic",basicPrice);
 
         date = new Date(date);
         var dayCounter = date.getDay(); //scan holiday within term days.
         for (var i = 0; term > i; i++) {
             if (dayCounter === 0 || dayCounter === 6) {
-                basicPrice += (single_ns + single_s) * 1750;
-                basicPrice += (double_ns * 2 + double_s * 2) * 1500;
+                basicPrice += 1750 * hc;
             }
             dayCounter++;
             if (dayCounter > 6) {
                 dayCounter = 0;
             }
         }
-        var holidayPriceBill = basicPrice; //calc holiday price s:+1750, d:+1500;
+        var holidayPriceBill = basicPrice; //calc holiday price s:+1750
+        console.log("holidayPriceBill",holidayPriceBill);
         var totalBill = holidayPriceBill;
-        var headCount = (single_ns + single_s + double_ns * 2 + double_s * 2);
 
         if (bf === "on") {
-            totalBill = holidayPriceBill + (1000 * term * headCount);
+            totalBill = holidayPriceBill + (1000 * term * hc);
         } //bf
 
-        var now = new Date(); //If the 1st day is after 20days from today, 1000yen off each one person.
-        if (date.getTime() > now.getTime() + 19 * 24 * 3600 * 1000) {
-            totalBill = totalBill - (1000 * headCount);
-        }
-
         if (planA === "on") {
-            totalBill += (1000 * headCount);
+            totalBill += (1000 * hc);
         }
         if (planB === "on") {
-            totalBill += (1000 * headCount);
+            totalBill += (1000 * hc);
         }
+        console.log("total",totalBill);
         return totalBill;
     },
 };

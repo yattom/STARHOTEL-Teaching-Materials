@@ -82,83 +82,31 @@ test("decimalCheck", function(){
 
 test("calcTotalBilling", function(){
     /*Test Design without combination.
-    arg: single_ns, single_s, double_ns, double_s, date, bf, planA, planB.
+    arg: date, bf, planA, planB, term, hc
     valid partition:
-        (1)single_ns:1, single_s:0, double_ns:0, double_s:0, date:workday, bf:off, planA:off, planB:off, term:1; => 7000
-        (2)single_ns:0, single_s:0, double_ns:1, double_s:0, date:workday, bf:off, planA:off, planB:off, term:1; => 12000
-        (3)single_ns:0, single_s:0, double_ns:0, double_s:1, date:workday, bf:off, planA:off, planB:off, term:1; => 12000
-        (4)single_ns:1, single_s:1, double_ns:1, double_s:1, date:workday, bf:off, planA:off, planB:off, term:1; => 38000
-        (5)single_ns:1, single_s:0, double_ns:0, double_s:0, date:holiday, bf:off, planA:off, planB:off, term:1; => 8750
-        (6)single_ns:1, single_s:0, double_ns:0, double_s:0, date:holiday, bf:on, planA:off, planB:off, term:1; => 9750
-        (7)single_ns:1, single_s:0, double_ns:0, double_s:0, date:holiday, bf:on, planA:off, planB:on, term:1; => 10750
-        (8)single_ns:1, single_s:1, double_ns:1, double_s:1, date:holiday, bf:on, planA:on, planB:on, term:1; => 10750
-
-        (9)single_ns:1, single_s:0, double_ns:0, double_s:0, date:workday, bf:off, planA:off, planB:off, term:2; => 14000
-       (10)single_ns:1, single_s:0, double_ns:0, double_s:0, date:workday, bf:on, planA:off, planB:off, term:2; => 16000
-       (11)single_ns:1, single_s:0, double_ns:0, double_s:0, date:workday, bf:on, planA:on, planB:off, term:2; => 17000
-
-       (12)single_ns:1, single_s:0, double_ns:0, double_s:0, date:twentyOneDaysAfter, bf:off, planA:off, planB:off, term:1; => 6000
-       (13)single_ns:1, single_s:0, double_ns:0, double_s:0, date:nineteenDaysAfter, bf:off, planA:off, planB:off, term:1; => 7000
-       (14)single_ns:2, single_s:0, double_ns:0, double_s:0, date:twentyOneDaysAfter, bf:off, planA:off, planB:off, term:1; => 12000
-       (15)single_ns:1, single_s:0, double_ns:1, double_s:0, date:twentyOneDaysAfter, bf:off, planA:off, planB:off, term:1; => 16000
-       (16)single_ns:1, single_s:0, double_ns:0, double_s:0, date:twentyOneDaysAfter, bf:off, planA:off, planB:off, term:2; => 13000
-
-       //9 days from Satday, The holiday(getDay() => 0 || 6) include 4 times. 601 234 560
-       (17)single_ns:1, single_s:0, double_ns:0, double_s:0, date:holiday, bf:off, planA:off, planB:off, term:9; => 8750 + 35000 + 8750 + 8750 + 7000
-
+        (1) : workday, on, on, on, 1, 1 => 10000;
+        (2) : holidayday, on, on, on, 1, 1 => 11750;
+        (3) : holidayday, off, off, off, 1, 1 => 8750;
+        (4) : workday, on, off, off, 1, 5 => (7000 * 5) + (1000 * 5);
+        (5) : workday, off, off, off, 5, 1 => (7000 * 5);
+        (6) : workday, off, off, off, 6, 1 => (7000 * 5) + 8750;
     invalid partition:
         N/A, ensure by error check until here and it is single & liner processing.
     boundary value:
         N/A, ensure by error check until here and it is single & liner processing. 
     */
 
-    var workday = new Date("2013/8/29");
-    if(workday.getDay() == 0 || workday.getDay() == 6){ //if today is holiday, slide 3 days after. #0->3, 6->2   
-        workday.setTime(workday.getTime() + 3 * 24 * 3600 * 1000);
-        console.log("slide!wk:" + twentyOneDaysAfter);
-    }
-    var holiday = new Date("2013/8/31");//Satday
-    var twentyOneDaysAfter = new Date();
-    var nineteenDaysAfter = new Date();
+    var workday = new Date("2013/8/26");//Monday
+    var holiday = new Date("2013/8/31");//Saturday
 
-    twentyOneDaysAfter.setTime(twentyOneDaysAfter.getTime() + 21 * 24 * 3600 * 1000);
-    if(twentyOneDaysAfter.getDay() == 0 || twentyOneDaysAfter.getDay() == 6){ //if it is holiday, slide 3 days after. #0->3, 6->2   
-        twentyOneDaysAfter.setTime(twentyOneDaysAfter.getTime() + 3 * 24 * 3600 * 1000);
-        console.log("slide!tw:" + twentyOneDaysAfter);
-    }
-    nineteenDaysAfter.setTime(nineteenDaysAfter.getTime() + 19 * 24 * 3600 * 1000);
-    if(nineteenDaysAfter.getDay() == 0 || nineteenDaysAfter.getDay() == 6){ //if it is holiday, slide -3 days ago. #0->4, 6->3   
-        nineteenDaysAfter.setTime(nineteenDaysAfter.getTime() - 3 * 24 * 3600 * 1000);
-        console.log("slide!nt:" + nineteenDaysAfter);
-    }
-    console.log("wk: " + workday);        
-    console.log("hl: " + holiday);    
-    console.log("tw: " + twentyOneDaysAfter);
-    console.log("nt: " + nineteenDaysAfter);
+    deepEqual(starHotel.calcTotalBilling(workday, "on", "on", "on", 1, 1), 10000);
+    deepEqual(starHotel.calcTotalBilling(holiday, "on", "on", "on", 1, 1), (7000 * 1.25) +1000+1000+1000);
+    deepEqual(starHotel.calcTotalBilling(holiday, "off", "off", "off", 1, 1), (7000 * 1.25));
+    deepEqual(starHotel.calcTotalBilling(workday, "on", "off", "off", 1, 5), (7000 * 5) + (1000 * 5));
+    deepEqual(starHotel.calcTotalBilling(workday, "off", "off", "off", 5, 1), (7000 * 5));
+    deepEqual(starHotel.calcTotalBilling(workday, "off", "off", "off", 6, 1), (7000 * 5) + 8750);
 
-    deepEqual(starHotel.calcTotalBilling(1, 0, 0, 0, workday, "off", "off", "off", 1), 7000, "(1)");
-    deepEqual(starHotel.calcTotalBilling(0, 0, 1, 0, workday, "off", "off", "off", 1), 12000, "(2)");
-    deepEqual(starHotel.calcTotalBilling(0, 0, 0, 1, workday, "off", "off", "off", 1), 12000, "(3)");
-    deepEqual(starHotel.calcTotalBilling(1, 1, 1, 1, workday, "off", "off", "off", 1), 14000 + 12000 + 12000, "(4)");
-    deepEqual(starHotel.calcTotalBilling(1, 0, 0, 0, holiday, "off", "off", "off", 1), 7000 * 1.25, "(5)");
-    deepEqual(starHotel.calcTotalBilling(1, 0, 0, 0, holiday, "on", "off", "off", 1), 7000 * 1.25 + 1000, "(6)");
-    deepEqual(starHotel.calcTotalBilling(1, 0, 0, 0, holiday, "on", "on", "off", 1), 7000 * 1.25 + 1000 + 1000, "(7)");
-    deepEqual(starHotel.calcTotalBilling(1, 1, 1, 1, holiday, "on", "on", "on", 1), (8750 * 2) + (7500 * 4) + (1000 * 6) + (2000 * 6), "(8)");
-
-    deepEqual(starHotel.calcTotalBilling(1, 0, 0, 0, workday, "off", "off", "off", 2), 14000, "(9)");
-    deepEqual(starHotel.calcTotalBilling(1, 0, 0, 0, workday, "on", "off", "off", 2), 16000, "(10)");
-    deepEqual(starHotel.calcTotalBilling(1, 0, 0, 0, workday, "on", "on", "off", 2), 17000, "(11)");
-
-    deepEqual(starHotel.calcTotalBilling(1, 0, 0, 0, twentyOneDaysAfter, "off", "off", "off", 1), 6000, "(12)");
-    deepEqual(starHotel.calcTotalBilling(1, 0, 0, 0, nineteenDaysAfter, "off", "off", "off", 1), 7000, "(13)");
-    deepEqual(starHotel.calcTotalBilling(2, 0, 0, 0, twentyOneDaysAfter, "off", "off", "off", 1), 12000, "(14)");
-    deepEqual(starHotel.calcTotalBilling(1, 0, 1, 0, twentyOneDaysAfter, "off", "off", "off", 1), 16000, "(15)");
-    if(twentyOneDaysAfter.getDay() == 5){// this test case 20 days after + 2days. If 20 days after is friday, holiday within test case ranges.
-        twentyOneDaysAfter.setTime(twentyOneDaysAfter.getTime() + 3 * 24 * 3600 * 1000);
-    }
-    deepEqual(starHotel.calcTotalBilling(1, 0, 0, 0, twentyOneDaysAfter, "off", "off", "off", 2), 13000, "(16)");
-
-    deepEqual(starHotel.calcTotalBilling(1, 0, 0, 0, holiday, "off", "off", "off", 9), 7000 * 5 + 8750 * 4, "(17)");
 });
+
 
 
