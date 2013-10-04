@@ -83,8 +83,8 @@ var starHotelView = {
         }
 
         $("#billing").append("<h4 id='guestname'>お名前: <span id='gname'>" + checkValRes.gname + "</span> 様</h4>");
-        $("#billing").slideDown("fast");
-        $("#reserve_info").slideDown("fast");
+        //$("#billing").slideDown("fast");
+        //$("#reserve_info").slideDown("fast");
 
         $("#reserve_info").append('<hr><button id="commit" type="sender" class="btn" style="margin-bottom:20px">確定</button>');
 
