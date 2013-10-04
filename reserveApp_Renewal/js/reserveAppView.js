@@ -86,7 +86,9 @@ var starHotelView = {
         $("#billing").slideDown("fast");
         $("#reserve_info").slideDown("fast");
 
-        $("#reserve_info").append('<hr><button id="confirm" type="sender" class="btn" style="margin-bottom:20px">確認</button>');
+        $("#reserve_info").append("<hr><a href=\"javascript:alert('未実装')\">利用規約を確認</a><br><br>");
+        $("#reserve_info").append('<button id="agree_and_goto_next" type="sender" class="btn" style="margin-bottom:20px">利用規約に同意して次へ</button>');
+        $("#reserve_info").append('<button id="disagree" type="sender" class="btn" style="margin-bottom:20px; margin-left:20px" onclick="alert(\'未実装\');return false;">同意しない</button>');
 
     },
 

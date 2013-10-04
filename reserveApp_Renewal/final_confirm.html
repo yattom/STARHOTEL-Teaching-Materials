@@ -61,10 +61,11 @@
 
     <div class="container">
 
-        <h1>最終のご確認</h1>
+        <h1>予約を完了しました</h1>
 
         <div id="slide1" class="well">
             <div id="errorcheck_result" style="color:red"></div>
+            ご来館、心よりお待ちしております。
             <hr>
             <button id="returnto_checkInfo" type="sender" class="btn" style="margin-bottom:20px">戻る</button>
             <div id="billing" style="display:none; margin-bottom:20px"></div>
@@ -149,32 +150,8 @@
 
         var checkValRes = getUrlVars();
 
-        if (!starHotelView.finalConfirm_isErrorRender(checkValRes)) {
-            return false;
-        }
-
-        //rendering prev html data
-        var prevHtml = decodeURIComponent(checkValRes["pv_formdata"]);
-        starHotelView.renderFinalConfirm(prevHtml);
-
     });
     </script>
-
-    <div id="goto_thanks" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-header">
-            <button id="modalClose" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="myModalLabel">最終確認</h3>
-        </div>
-        <div class="modal-body">
-            <p>この内容で予約を確定します。よろしいですか？</p>
-        </div>
-        <div class="modal-footer">
-            <button id="modalNo" class="btn" data-dismiss="modal" aria-hidden="true">いいえ</button>
-            <button id="modalYes" class="btn btn-primary">
-                <a href="./thanks.html" style="color:white">はい</a>
-            </button>
-        </div>
-    </div>
 
 </body>
 
