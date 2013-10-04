@@ -1,6 +1,7 @@
 package practicework.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -25,6 +26,7 @@ public class ReserveInputPage {
         WebElement element = driver.findElement(datePick);
         element.clear();
         element.sendKeys(year + "/" + month + "/" + day);
+        element.sendKeys(Keys.RETURN);
     }
 
     public void setReserveTerm(String value) {
