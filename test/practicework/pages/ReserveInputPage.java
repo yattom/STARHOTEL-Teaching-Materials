@@ -16,19 +16,19 @@ public class ReserveInputPage {
         this.driver = driver;
     }
 
-    public void setReserveYear(String value) {
+    private void setReserveYear(String value) {
         WebElement element = driver.findElement(reserveYear);
         element.clear();
         element.sendKeys(value);
     }
 
-    public void setReserveMonth(String value) {
+    private void setReserveMonth(String value) {
         WebElement element = driver.findElement(reserveMonth);
         element.clear();
         element.sendKeys(value);
     }
 
-    public void setReserveDay(String value) {
+    private void setReserveDay(String value) {
         WebElement element = driver.findElement(reserveDay);
         element.clear();
         element.sendKeys(value);
