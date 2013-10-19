@@ -42,11 +42,12 @@ public class IntroWork5 {
         String url = "file:///" + html.getAbsolutePath();
         driver.get(url);
         
-        // TODO このSleep処理を削除して、代わりにチェックボックスを選択する処理を記述ください
+        // TODO 以下を削除して、代わりにチェックボックスを選択する処理を記述ください
         try {
             Thread.sleep(8000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+        // TODO ここまで削除してください
     }
 }

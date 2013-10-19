@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
@@ -44,7 +45,8 @@ public class IntroWork6 {
         String url = "file:///" + html.getAbsolutePath();
         driver.get(url);
         
-        Select headCount = new Select(driver.findElement(By.id("head_count")));
-        headCount.selectByValue("5");
+        WebElement headCount = driver.findElement(By.id("head_count"));
+        Select select = new Select(headCount);
+        select.selectByValue("5");
     }
 }

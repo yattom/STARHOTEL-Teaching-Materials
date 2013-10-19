@@ -47,13 +47,14 @@ public class PracticeWork1 {
         String url = "file:///" + html.getAbsolutePath();
         driver.get(url);
         
-        // TODO このSleep処理は削除してください
+        // TODO 以下は削除してください
         try {
             Thread.sleep(8000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-
+        // TODO ここまで削除してください
+        
         // 1ページ目入力画面
         driver.findElement(By.id("reserve_year")).clear();
         driver.findElement(By.id("reserve_year")).sendKeys("2013");

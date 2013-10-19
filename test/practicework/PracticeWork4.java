@@ -39,6 +39,22 @@ public class PracticeWork4 {
     
     @Test
     public void test() {
-        // TODO 1ページ目の初期値チェック処理を記述してください
+        File html = new File("reserveApp/index.html");
+        String url = "file:///" + html.getAbsolutePath();
+        driver.get(url);
+
+        /* TODO このコメントアウトを解除してください
+        ReserveInputPage inputPage = new ReserveInputPage(driver);
+        Calendar now = Calendar.getInstance();
+        assertThat(inputPage.getReserveYear(), 
+                is(Integer.toString(now.get(Calendar.YEAR))));
+        assertThat(inputPage.getReserveMonth(), 
+                is(Integer.toString(now.get(Calendar.MONTH) + 1)));
+        assertThat(inputPage.getReserveDay(), 
+                is(Integer.toString(now.get(Calendar.DATE))));
+        assertThat(inputPage.getReserveTerm(), is("1"));
+        TODO ここまでを解除してください */
+
+        // TODO 残りの初期値チェック処理を記述してください
     }
 }

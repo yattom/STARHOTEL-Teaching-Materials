@@ -73,15 +73,15 @@ public class IntroWork1 {
             Thread.sleep(1000); // デモ用。目で見て分かりやすいように、各操作の間にSleepを入れる
             WebElement userName = driver.findElement(By.id("user_name"));
             userName.sendKeys("テストユーザー");
-            Thread.sleep(1000);
+            Thread.sleep(1000); // デモ用
             WebElement password = driver.findElement(By.id("password"));
             password.sendKeys("pass");
-            Thread.sleep(1000);
+            Thread.sleep(1000); // デモ用
             WebElement login = driver.findElement(By.id("login"));
             login.click();
-            Thread.sleep(1000);
+            Thread.sleep(1000); // デモ用
             driver.switchTo().alert().accept();
-            Thread.sleep(1000);        
+            Thread.sleep(1000); // デモ用       
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
