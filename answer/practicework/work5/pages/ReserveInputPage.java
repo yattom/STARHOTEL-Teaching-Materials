@@ -9,6 +9,9 @@ import org.openqa.selenium.support.ui.Select;
 public class ReserveInputPage {
     private WebDriver driver;
     private By datePick = By.id("datePick");
+    private By reserveYear = By.id("reserve_year");
+    private By reserveMonth = By.id("reserve_month");
+    private By reserveDay = By.id("reserve_day");
     private By reserveTerm = By.id("reserve_term");
     private By headCount = By.id("headcount");
     private By breakfastOn = By.id("breakfast_on");
@@ -20,6 +23,18 @@ public class ReserveInputPage {
 
     public ReserveInputPage(WebDriver driver) {
         this.driver = driver;
+    }
+    
+    public String getReserveYear() {
+        return driver.findElement(reserveYear).getAttribute("value");
+    }
+
+    public String getReserveMonth() {
+        return driver.findElement(reserveMonth).getAttribute("value");
+    }
+    
+    public String getReserveDay() {
+        return driver.findElement(reserveDay).getAttribute("value");
     }
 
     public void setReserveDate(String year, String month, String day) {
@@ -34,9 +49,17 @@ public class ReserveInputPage {
         select.selectByValue(value);
     }
     
+    public String getReserveTerm() {
+        return driver.findElement(reserveTerm).getAttribute("value");
+    }
+    
     public void setHeadCount(String value) {
         Select select = new Select(driver.findElement(headCount));
         select.selectByValue(value);
+    }
+    
+    public String getHeadCount() {
+        return driver.findElement(headCount).getAttribute("value");
     }
     
     public void setBreakfast(boolean on) {
@@ -47,11 +70,20 @@ public class ReserveInputPage {
         }
     }
     
+    public boolean getBreakfast() {
+        String checked = driver.findElement(breakfastOn).getAttribute("checked");
+        return "true".equals(checked);
+    }
+    
     public void setPlanA(boolean checked) {
         WebElement element = driver.findElement(planA);
         if (element.isSelected() != checked) {
             element.click();
         }
+    }
+    
+    public boolean getPlanA() {
+        return driver.findElement(planA).isSelected();
     }
 
     public void setPlanB(boolean checked) {
@@ -61,10 +93,18 @@ public class ReserveInputPage {
         }
     }
 
+    public boolean getPlanB() {
+        return driver.findElement(planB).isSelected();
+    }
+
     public void setGuestName(String value) {
         WebElement element = driver.findElement(guestName);
         element.clear();
         element.sendKeys(value);
+    }
+    
+    public String getGuestName() {
+        return driver.findElement(guestName).getAttribute("value");
     }
     
     public ReserveConfirmPage goToNext() {

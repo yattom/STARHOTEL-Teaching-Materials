@@ -1,14 +1,14 @@
 package practicework.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 public class ReserveInputPage {
     private WebDriver driver;
-    private By reserveYear = By.id("reserve_year");
-    private By reserveMonth = By.id("reserve_month");
-    private By reserveDay = By.id("reserve_day");
+    private By datePick = By.id("datePick");
     private By reserveTerm = By.id("reserve_term");
     private By headCount = By.id("headcount");
     private By breakfastOn = By.id("breakfast_on");
@@ -16,66 +16,28 @@ public class ReserveInputPage {
     private By planA = By.id("plan_a");
     private By planB = By.id("plan_b");
     private By guestName = By.id("guestname");
-    private By goToNext = By.id("goto_next");
+    private By goToNext = By.id("agree_and_goto_next");
 
     public ReserveInputPage(WebDriver driver) {
         this.driver = driver;
     }
 
-    private void setReserveYear(String value) {
-        WebElement element = driver.findElement(reserveYear);
-        element.clear();
-        element.sendKeys(value);
-    }
-    
-    public String getReserveYear() {
-        return driver.findElement(reserveYear).getAttribute("value");
-    }
-
-    private void setReserveMonth(String value) {
-        WebElement element = driver.findElement(reserveMonth);
-        element.clear();
-        element.sendKeys(value);
-    }
-    
-    public String getReserveMonth() {
-        return driver.findElement(reserveMonth).getAttribute("value");
-    }
-    
-    private void setReserveDay(String value) {
-        WebElement element = driver.findElement(reserveDay);
-        element.clear();
-        element.sendKeys(value);
-    }
-    
-    public String getReserveDay() {
-        return driver.findElement(reserveDay).getAttribute("value");
-    }
-
     public void setReserveDate(String year, String month, String day) {
-        setReserveYear(year);
-        setReserveMonth(month);
-        setReserveDay(day);
+        WebElement element = driver.findElement(datePick);
+        element.clear();
+        element.sendKeys(year + "/" + month + "/" + day);
+        element.sendKeys(Keys.RETURN);
     }
 
     public void setReserveTerm(String value) {
-        WebElement element = driver.findElement(reserveTerm);
-        element.clear();
-        element.sendKeys(value);
+        Select select = new Select(driver.findElement(reserveTerm));
+        select.selectByValue(value);
     }
     
-    public String getReserveTerm() {
-        return driver.findElement(reserveTerm).getAttribute("value");
-    }
     
     public void setHeadCount(String value) {
-        WebElement element = driver.findElement(headCount);
-        element.clear();
-        element.sendKeys(value);
-    }
-    
-    public String getHeadCount() {
-        return driver.findElement(headCount).getAttribute("value");
+        Select select = new Select(driver.findElement(headCount));
+        select.selectByValue(value);
     }
     
     public void setBreakfast(boolean on) {
@@ -86,20 +48,11 @@ public class ReserveInputPage {
         }
     }
     
-    public boolean getBreakfast() {
-        String checked = driver.findElement(breakfastOn).getAttribute("checked");
-        return "true".equals(checked);
-    }
-    
     public void setPlanA(boolean checked) {
         WebElement element = driver.findElement(planA);
         if (element.isSelected() != checked) {
             element.click();
         }
-    }
-    
-    public boolean getPlanA() {
-        return driver.findElement(planA).isSelected();
     }
 
     public void setPlanB(boolean checked) {
@@ -109,18 +62,10 @@ public class ReserveInputPage {
         }
     }
 
-    public boolean getPlanB() {
-        return driver.findElement(planB).isSelected();
-    }
-
     public void setGuestName(String value) {
         WebElement element = driver.findElement(guestName);
         element.clear();
         element.sendKeys(value);
-    }
-    
-    public String getGuestName() {
-        return driver.findElement(guestName).getAttribute("value");
     }
     
     public ReserveConfirmPage goToNext() {
