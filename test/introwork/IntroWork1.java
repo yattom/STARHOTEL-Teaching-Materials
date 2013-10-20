@@ -72,7 +72,7 @@ public class IntroWork1 {
         try {
             Thread.sleep(1000); // デモ用。目で見て分かりやすいように、各操作の間にSleepを入れる
             WebElement userName = driver.findElement(By.id("user_name"));
-            userName.sendKeys("テストユーザー");
+            userName.sendKeys("TestUser");
             Thread.sleep(1000); // デモ用
             WebElement password = driver.findElement(By.id("password"));
             password.sendKeys("pass");

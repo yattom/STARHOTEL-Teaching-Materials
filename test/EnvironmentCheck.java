@@ -46,7 +46,7 @@ public class EnvironmentCheck {
         String url = "file:///" + html.getAbsolutePath();
         driver.get(url);        
         WebElement userName = driver.findElement(By.id("user_name"));
-        userName.sendKeys("テストユーザー");
+        userName.sendKeys("TestUser");
         WebElement password = driver.findElement(By.id("password"));
         password.sendKeys("pass");
         WebElement login = driver.findElement(By.id("login"));

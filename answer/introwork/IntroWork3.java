@@ -46,6 +46,7 @@ public class IntroWork3 {
         driver.get(url);
         
         WebElement subject = driver.findElement(By.id("subject"));
-        subject.sendKeys("自動テストカンファレンス");
+        subject.clear();
+        subject.sendKeys("Selenium");
     }
 }
