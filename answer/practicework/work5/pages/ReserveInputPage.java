@@ -71,8 +71,7 @@ public class ReserveInputPage {
     }
     
     public boolean getBreakfast() {
-        String checked = driver.findElement(breakfastOn).getAttribute("checked");
-        return "true".equals(checked);
+        return driver.findElement(breakfastOn).isSelected();
     }
     
     public void setPlanA(boolean checked) {
