@@ -51,7 +51,7 @@ public class PracticeWork2 {
         
         // 1ページ目入力画面
         ReserveInputPage inputPage = new ReserveInputPage(driver);
-        inputPage.setReserveDate("2013", "12", "7");
+        inputPage.setReserveDate("2013", "12", "7");  // TODO 明日以降直近の土曜日に変更
         inputPage.setReserveTerm("1");
         
         // TODO 残りの処理を記述してください
@@ -60,8 +60,8 @@ public class PracticeWork2 {
         
         // 2ページ目入力画面
         assertThat(confirmPage.getPrice(), is("105750"));
-        assertThat(confirmPage.getDateFrom(), is("2013年12月7日"));
-        assertThat(confirmPage.getDateTo(), is("2013年12月8日"));
+        assertThat(confirmPage.getDateFrom(), is("2013年12月7日")); // TODO 変更する
+        assertThat(confirmPage.getDateTo(), is("2013年12月8日")); // TODO 変更する
         assertThat(confirmPage.getDaysCount(), is("1"));
 
         // TODO 残りの処理を記述してください
