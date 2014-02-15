@@ -50,7 +50,7 @@ public class PracticeWork3 {
         driver.get(url);
         
         ReserveInputPage inputPage = new ReserveInputPage(driver);
-        inputPage.setReserveDate("2013", "12", "8");
+        inputPage.setReserveDate("2013", "12", "8"); // TODO 明日以降直近の日曜日に変更
         inputPage.setReserveTerm("3");
         inputPage.setHeadCount("1");
         inputPage.setBreakfast(false);
@@ -61,8 +61,8 @@ public class PracticeWork3 {
         
         // 2ページ目入力画面
         assertThat(confirmPage.getPrice(), is("22750"));
-        assertThat(confirmPage.getDateFrom(), is("2013年12月8日"));
-        assertThat(confirmPage.getDateTo(), is("2013年12月11日"));
+        assertThat(confirmPage.getDateFrom(), is("2013年12月8日")); // TODO 変更
+        assertThat(confirmPage.getDateTo(), is("2013年12月11日")); // TODO 変更
         assertThat(confirmPage.getDaysCount(), is("3"));
         assertThat(confirmPage.getHeadCount(), is("1"));
         assertThat(confirmPage.getBreakfast(), is("なし"));

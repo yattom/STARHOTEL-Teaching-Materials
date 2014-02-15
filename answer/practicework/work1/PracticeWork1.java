@@ -50,11 +50,11 @@ public class PracticeWork1 {
         
         // 1ページ目入力画面
         driver.findElement(By.id("reserve_year")).clear();
-        driver.findElement(By.id("reserve_year")).sendKeys("2013");
+        driver.findElement(By.id("reserve_year")).sendKeys("2013");　// TODO 明日以降直近の土曜日に変更
         driver.findElement(By.id("reserve_month")).clear();
-        driver.findElement(By.id("reserve_month")).sendKeys("12");
+        driver.findElement(By.id("reserve_month")).sendKeys("12");　// TODO 明日以降直近の土曜日に変更
         driver.findElement(By.id("reserve_day")).clear();
-        driver.findElement(By.id("reserve_day")).sendKeys("7");
+        driver.findElement(By.id("reserve_day")).sendKeys("7");　// TODO 明日以降直近の土曜日に変更
         driver.findElement(By.id("reserve_term")).clear();
         driver.findElement(By.id("reserve_term")).sendKeys("1");
         driver.findElement(By.id("headcount")).clear();
@@ -74,8 +74,8 @@ public class PracticeWork1 {
         
         // 2ページ目入力画面
         assertThat(driver.findElement(By.id("price")).getText(), is("105750"));
-        assertThat(driver.findElement(By.id("datefrom")).getText(), is("2013年12月7日"));
-        assertThat(driver.findElement(By.id("dateto")).getText(), is("2013年12月8日"));
+        assertThat(driver.findElement(By.id("datefrom")).getText(), is("2013年12月7日"));　// TODO 変更
+        assertThat(driver.findElement(By.id("dateto")).getText(), is("2013年12月8日")); // TODO 変更
         assertThat(driver.findElement(By.id("dayscount")).getText(), is("1"));
         assertThat(driver.findElement(By.id("hc")).getText(), is("9"));
         assertThat(driver.findElement(By.id("bf_order")).getText(), is("あり"));
