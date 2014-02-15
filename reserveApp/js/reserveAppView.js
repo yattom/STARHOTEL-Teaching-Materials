@@ -68,14 +68,17 @@ var starHotelView = {
         dateValue.setTime(dateValue.getTime() + checkValRes.reserve_t * 24 * 3600 * 1000); //Warning!! dateValue move to N days after.   
         var dateTo = dateValue.getFullYear() + "年" + (dateValue.getMonth() + 1) + "月" + dateValue.getDate() + "日";
 
-        $("#billing").append("<h4 id='term'>期間: <span id='datefrom'>" + dateFrom + "</span> 〜 <span id='dateto'>" + dateTo + "</span>  <span id='dayscount'>" + checkValRes.reserve_t + "</span>泊</h4>");
+        $("#billing").append("<h4 id='term'>期間: <span id='datefrom'>" + dateFrom + "</span>～<span id='dateto'>" + dateTo + "</span>  <span id='dayscount'>" + checkValRes.reserve_t + "</span>泊</h4>");
         $("#billing").append("<h4 id='headcount'>ご人数: <span id='hc'>" + checkValRes.hc + "</span>名様</h4>");
 
-        if (checkValRes.bf === "on") {
-            $("#billing").append("<h4 id='breakfast'>朝食: <span id='bf_order'>あり</span></h4>");
-        } else {
-            $("#billing").append("<h4 id='breakfast'>朝食: <span id='bf_order'>なし</span></h4>");
-        } if (checkValRes.plan_a || checkValRes.plan_b) {
+        if (!simpleSiteMode) {
+            if (checkValRes.bf === "on") {
+                $("#billing").append("<h4 id='breakfast'>朝食: <span id='bf_order'>あり</span></h4>");
+            } else {
+                $("#billing").append("<h4 id='breakfast'>朝食: <span id='bf_order'>なし</span></h4>");
+            } 
+        }
+        if (checkValRes.plan_a || checkValRes.plan_b) {
             $("#billing").append("<h4 id='plan'>プラン: ");
             if (checkValRes.plan_a) $("#plan").append("<span id='plan_a_order'> 昼からチェックインプラン </span>");
             if (checkValRes.plan_b) $("#plan").append("<span id='plan_b_order'> お得な観光プラン </span>");

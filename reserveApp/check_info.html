@@ -30,6 +30,7 @@
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/mode.js"></script>
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap-transition.js"></script>
     <script src="js/bootstrap-carousel.js"></script>
@@ -59,7 +60,7 @@
     })
 
     var checkValRes = getUrlVars();
-    $(function() {　 //init 
+    $(function() { //init 
 
         var dateValue = checkValRes["reserve_y"] + "/" + checkValRes["reserve_m"] + "/" + checkValRes["reserve_d"];
         if (!starHotelView.checkInfo_isErrorRender(checkValRes, dateValue)) {
