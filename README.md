@@ -9,7 +9,7 @@ reserveApp: the first release in imaginary project on the hands on. Designed lik
 reserveApp_Renewal: the 2nd release in the project, It is modern web design(screen shot).  
   
 The functional specification is here. but it is member only for now.
-https://docs.google.com/document/d/1vex35wLGv5BAjMCRilkxHNRjIkXuPupAj6mWVhEdM7w/edit
+https://docs.google.com/document/d/1dmQN4QKFzWOJODzS-bgYcFkCpfqiFqZ95KKCsmucJKU/edit
 
 screen shot
 ===========
