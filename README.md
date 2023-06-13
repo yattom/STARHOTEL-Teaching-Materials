@@ -1,3 +1,5 @@
+Forked from the original with the intention of intentionally introducing a few obvious bugs to teach new graduates about software testing.
+
 STARHOTEL
 =========
 
