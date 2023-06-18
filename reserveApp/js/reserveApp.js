@@ -75,14 +75,14 @@ var starHotel = {
         var totalBill = holidayPriceBill;
 
         if (bf === "on") {
-            totalBill = holidayPriceBill + (1000 * term * hc);
+            totalBill = holidayPriceBill + (1000 * term);
         } //bf
 
         if (planA === "on") {
             totalBill += (1000 * hc);
         }
         if (planB === "on") {
-            totalBill += (1000 * hc);
+            totalBill += (1200 * hc);
         }
         console.log("total",totalBill);
         return totalBill;
